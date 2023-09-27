@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="bestuser" id="1">
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints unique="true"
+                             nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints unique="true"
+                nullable="false"/>
+            </column>
+            <column name="last_name" type = "varchar(255)">
+                <constraints unique="true"
+                nullable="false"/>
+            </column>
+            <column name="date_of_birth" type = "date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type = "varchar(255)"/>
+            <column name="phone_number" type ="varchar(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bestuser" id="2">
+        <sql>insert into user (email, first_name, last_name, date_of_birth, address, phone_number)
+             values
+                 ('example1@gmail.com', 'Name1', 'Surname1', '2000-05-05', 'address1', '012-345-678'),
+                 ('example2@gmail.com', 'Name2', 'Surname2', '1999-04-15', 'address2', '012-345-678'),
+                 ('example3@gmail.com', 'Name3', 'Surname3', '1998-06-25','address3', '012-345-678');
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
